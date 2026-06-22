@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "val_engine"
+name = "macro_pricer"
 version = "0.0.1"
 description = "Macroeconomic property valuation. Continuous ingestion, strict validation, deterministic output."
 authors = [
@@ -13,9 +13,10 @@ license = { file = "LICENSE" }
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License"
+    "License :: OSI Approved :: MIT License",
 ]
 dependencies = [
+    "jinja2>=3.1.6",
     "loguru",
     "matplotlib>=3.10.9",
     "numpy>=2.4.4",
@@ -31,16 +32,17 @@ dependencies = [
 ]
 requires-python = "~=3.13.0"
 
+[tool.flit.module]
+name = "valuation"
 
 [tool.ruff]
 line-length = 99
-src = ["val_engine"]
-include = ["pyproject.toml", "val_engine/**/*.py"]
+src = ["valuation"]
+include = ["pyproject.toml", "valuation/**/*.py"]
 
 [tool.ruff.lint]
-extend-select = ["I"]  # Add import sorting
+extend-select = ["I"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["val_engine"]
+known-first-party = ["valuation"]
 force-sort-within-sections = true
-
